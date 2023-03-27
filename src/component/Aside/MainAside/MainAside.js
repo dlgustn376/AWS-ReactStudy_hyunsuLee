@@ -11,7 +11,8 @@ import { IoIosCalendar } from 'react-icons/io';
 import { BsCardChecklist } from 'react-icons/bs';
 import { BiListCheck } from 'react-icons/bi';
 import { FaUser } from 'react-icons/fa';
-
+import { GoChecklist } from 'react-icons/go';
+import { FcTodoList } from 'react-icons/fc';
 import * as S from './Style'
 
 const MainAside = () => {
@@ -61,6 +62,18 @@ const MainAside = () => {
                             title: '사용자 전체 조회',
                             itemId: '/sample/input/1',
                             elemBefore: () => <FaUser />    
+                        }
+                    ]
+                },
+                {
+                    title: 'ToDoList',
+                    itemId: '/todo',
+                    elemBefore: () => <FcTodoList />,
+                    subNav: [
+                        {
+                            title: 'Todo',
+                            itemId: '/todo',
+                            elemBefore: () => <GoChecklist />    
                         }
                     ]
                 },
