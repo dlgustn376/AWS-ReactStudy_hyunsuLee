@@ -56,10 +56,10 @@ return (
                     <h1 css={S.modalTitle}>{props.title}</h1>
                 </header>
                 <main css={S.modalMain}>
-                    <input css={S.modalInput} type="text"onChange={contentChange} defaultValue={props.todo.content}/>
+                    <input css={S.modalInput} type="text"onChange={contentChange} onKeyUp={onSubmitKeyUp} defaultValue={props.todo.content}/>
                 </main>
                 <footer css={S.modalFooter}>
-                    <button css={S.modalButton} type='button' onClick={onSubmit} onKeyUp={onSubmitKeyUp}>확인</button>
+                    <button css={S.modalButton} type='button' onClick={onSubmit}>확인</button>
                     <button css={S.modalButton} type='button' onClick={closeModal}>취소</button>
                 </footer>
             </div>

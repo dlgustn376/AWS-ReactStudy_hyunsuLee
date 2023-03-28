@@ -101,7 +101,6 @@ const Todo = () => {
                 )}
             </div>
             {isOpen ? <PromptModal title={'Edit Todo'} todo={modifyTodo} setIsOpen={setIsOpen} updateTodo={updateTodo} />: ''}
-            
         </>
     );
 };
