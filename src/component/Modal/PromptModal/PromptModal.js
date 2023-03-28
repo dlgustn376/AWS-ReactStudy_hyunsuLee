@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import React, { useRef,useState,useEffect } from 'react';
 import * as S from './style'
+import React, { useRef,useState,useEffect } from 'react';
 
 const PromptModal = (props) =>{
 
@@ -49,7 +49,8 @@ const PromptModal = (props) =>{
         });
         closeModal();
     }
-return (
+    
+    return (
         <div css={S.modalContainer} >
             <div css={S.modalBox} ref={modalRef}>
                 <header css={S.modalHeader}>

@@ -1,17 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { FcPlus } from 'react-icons/fc';
-import { BiPen } from 'react-icons/bi';
-import { TiTrash } from 'react-icons/ti';
-import React, {useRef, useState} from 'react';
-import PromptModal from "../../Modal/PromptModal/PromptModal";
-import * as S from './style'
+
+import React from 'react';
+import { useState } from "react";
+import { useRef } from "react";
+import PromptModal from "../../component/Todo/Modal/PromptModal/PromptModal";
+import TodoList from "../../component/Todo/TodoList/TodoList";
+import AddTodo from "../../component/Todo/AddTodo/AddTodo";
+
+const TodoContainer = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    width: 100%;
+`;
+
 
 
 const Todo = () => {
+
     const [isOpen, setIsOpen] = useState(false);
+
     const [modifyTodo, setModifyTodo] = useState({
-        id:0,
+        id: 0,
         content: ''
     });
 
@@ -19,7 +31,6 @@ const Todo = () => {
         id: 0,
         content: ''
     });
-
     const [todoList, setTodoList] = useState([]);
     const todoId = useRef(1);
 
@@ -56,51 +67,41 @@ const Todo = () => {
         ))
     }
 
-    const updateTodo = (modifyTodo) =>{
+    const updateTodo = (modifyTodo) => {
         setTodoList(
             todoList.map(
                 todo => {
-                    if(todo.id === modifyTodo.id){
+                    if(todo.id === modifyTodo.id) {
                         todo.content = modifyTodo.content;
                     }
                     return todo;
                 }
-
             )
         )
     }
 
-    const openModal = (id) =>{
-
+    const openModal = (id) => {
         setModifyTodo(todoList.filter(
             todo => todo.id === id
         )[0]);
 
         setIsOpen(true);
-    } 
+    }
 
     return (
         <>
-            <div css={S.TodoContainer}>
-                <div css={S.TodoAddition}>
-                    <input css={S.AdditionInput} type="text" placeholder="Add your new Todo" onChange={onChange} onKeyUp={onKeyUp} value={input.content} />
-                    <button css={S.TodoAddButton} onClick={onAdd}><FcPlus /></button>
-                </div>
+            <div css={TodoContainer}>
+                <AddTodo onChange={onChange} onKeyUp={onKeyUp} value={input.content} onAdd={onAdd}/>
                 {todoList.map(
                     todo => {
                         return (
-                            <div css={S.TodoList} key={todo.id}>
-                                <div css={S.TodoContent}>{todo.content}</div>
-                                <div css={S.ItemGroup}>
-                                    <button css={S.ItemButton} onClick={() => openModal(todo.id)}><BiPen /></button>
-                                    <button css={S.ItemButton} onClick={() => onRemove(todo.id)}><TiTrash /></button>
-                                </div>
-                            </div>
+                            <TodoList todo={todo} openModal={openModal} onRemove={onRemove}/>
                         );
                     }
                 )}
             </div>
-            {isOpen ? <PromptModal title={'Edit Todo'} todo={modifyTodo} setIsOpen={setIsOpen} updateTodo={updateTodo} />: ''}
+            {isOpen ? (<PromptModal title={'Edit Todo'} todo={modifyTodo} setIsOpen={setIsOpen} updateTodo={updateTodo} />) : ''}
+            
         </>
     );
 };

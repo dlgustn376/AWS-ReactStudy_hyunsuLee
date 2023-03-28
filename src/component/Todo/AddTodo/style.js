@@ -1,13 +1,5 @@
 import { css } from "@emotion/react";
 
-export const TodoContainer = css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 100px;
-    width: 100%;
-`;
-
 export const TodoAddition = css`
     position: sticky;
     top: 0px;
@@ -51,42 +43,5 @@ export const TodoAddButton = css`
     cursor: pointer;
     &:hover {
         transform: translateY(-50%) rotate(180deg) scale(1.5);
-    }
-`;
-
-export const TodoList = css`
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-    border-radius: 7px;
-    padding: 10px;
-    width: 600px;
-
-    background-color: #fafafa;
-`;
-
-export const TodoContent = css`
-    width: 85%;
-    height: 40px;
-`;
-
-export const ItemGroup = css`
-    display: flex;
-    align-items: center;
-    height: 40px;
-`;
-
-export const ItemButton = css`
-    display: flex;
-    align-items: center;
-    border: none;
-    height: 100%;
-    color: #999;
-    background-color: #ffffff00;
-    cursor: pointer;
-    &:hover {
-        color: #121212;
     }
 `;
